@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final MainActivity context = this;
+        final Intent intent = getIntent();
 
         Button newContact = findViewById(R.id.new_contact_button);
         newContact.setOnClickListener(new View.OnClickListener() {
