@@ -65,6 +65,8 @@ public class EditActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     /** to be filled */
+                    Handler.contacts.remove(c);
+                    fillList();
                 }
             });
             parent.addView(testChunk);
