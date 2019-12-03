@@ -21,15 +21,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Space
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_weight="1" />
-
         <TextView
             android:id="@+id/name_tag"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:layout_width="218dp"
+            android:layout_height="56dp"
             android:layout_weight="3"
             android:text="Name:" />
 
@@ -52,15 +47,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="221dp"
+            android:layout_height="56dp"
             android:layout_weight="3"
             android:text="Phone Number:" />
 
@@ -72,6 +62,25 @@
             android:ems="10"
             android:hint="i.e. (000)-000-0000"
             android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/addContact"
+            android:layout_width="233dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Add Contact" />
+
+        <Button
+            android:id="@+id/returnButton"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:text="Return" />
     </LinearLayout>
 
 </LinearLayout>
