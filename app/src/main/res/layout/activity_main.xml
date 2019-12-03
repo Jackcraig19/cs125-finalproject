@@ -13,7 +13,6 @@
         android:background="#F44336"
         android:gravity="center"
         android:text="Not a data scraper"
-        android:textScaleX="1"
         android:textSize="36sp" />
 
     <Space
