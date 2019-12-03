@@ -23,20 +23,20 @@
 
         <Space
             android:layout_height="wrap_content"
-            android:layout_width="0"
+            android:layout_width="match_parent"
             android:layout_weight="1" />
 
         <TextView
             android:id="@+id/name_tag"
             android:layout_height="wrap_content"
-            android:layout_width="0"
+            android:layout_width="match_parent"
             android:layout_weight="3"
             android:text="Name:" />
 
         <EditText
             android:id="@+id/name_input"
             android:layout_height="wrap_content"
-            android:layout_width="0"
+            android:layout_width="match_parent"
             android:layout_weight="8"
             android:ems="10"
             android:inputType="textPersonName"
@@ -53,20 +53,20 @@
         android:orientation="horizontal">
 
         <Space
-            android:layout_width="0"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="0"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:text="Phone Number:" />
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="0"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="8"
             android:ems="10"
