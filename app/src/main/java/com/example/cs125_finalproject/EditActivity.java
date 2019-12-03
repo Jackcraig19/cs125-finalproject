@@ -13,6 +13,7 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+        setTitle("Contact Options");
         final EditActivity context = this;
 
         Button returnButton = findViewById(R.id.returnButton);
