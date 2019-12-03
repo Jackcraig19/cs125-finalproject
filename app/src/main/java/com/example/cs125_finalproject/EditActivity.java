@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,5 +26,12 @@ public class EditActivity extends AppCompatActivity {
                 finish();
             }
         });
+        LinearLayout parent = findViewById(R.id.contactLayout);
+        View testChunk = getLayoutInflater().inflate(R.layout.chunk_contact, parent, false);
+        TextView nameView = testChunk.findViewById(R.id.name);
+        nameView.setText("Test Name");
+        TextView numberView = testChunk.findViewById(R.id.number);
+        numberView.setText("(934)-934-0189");
+        parent.addView(testChunk);
     }
 }
