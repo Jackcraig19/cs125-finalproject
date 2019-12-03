@@ -23,11 +23,11 @@
     </LinearLayout>
 
     <Switch
-        android:id="@+id/switch"
+        android:id="@+id/toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Switch" />
+        android:text="Toggle" />
 
     <Button
         android:id="@+id/removeButton"
