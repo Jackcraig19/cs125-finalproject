@@ -28,7 +28,6 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, MainActivity.class));
-
                 finish();
             }
         });
@@ -48,6 +47,13 @@ public class EditActivity extends AppCompatActivity {
             numberView.setText(String.valueOf(c.getNumber()));
             Switch toggleSwitch = testChunk.findViewById(R.id.toggle);
             toggleSwitch.setChecked(c.getState());
+            Button remove = testChunk.findViewById(R.id.removeButton);
+            remove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    /** to be filled */
+                }
+            });
             parent.addView(testChunk);
         }
 
