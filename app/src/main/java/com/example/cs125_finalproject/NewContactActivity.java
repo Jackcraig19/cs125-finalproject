@@ -14,7 +14,7 @@ public class NewContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_contact);
         final NewContactActivity context = this;
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         Button returnButton = findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -28,7 +28,6 @@ public class NewContactActivity extends AppCompatActivity {
         addContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(new Intent(context, MainActivity.class));
                 finish();
             }
