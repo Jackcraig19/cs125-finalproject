@@ -10,6 +10,6 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-        setTitle("Contact Options");
+        setTitle("Contact Options");git com
     }
 }

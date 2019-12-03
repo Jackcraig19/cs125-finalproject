@@ -23,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button newContact = findViewById(R.id.new_contact_button);
+        newContact.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do stuff
+            }
+        });
     }
 
     @Override
@@ -46,4 +51,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
