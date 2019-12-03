@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Handler {
     public static ArrayList<Contact> contacts = new ArrayList<>();
-
+/**
     public static void fillContactsWithRandom(int amount) {
         if (contacts.size() >= amount) {
             return;
@@ -22,4 +22,5 @@ public class Handler {
             contacts.add(new Contact(generatedString, number));
         }
     }
+ */
 }

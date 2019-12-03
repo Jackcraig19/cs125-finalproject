@@ -34,8 +34,8 @@ public class NewContactActivity extends AppCompatActivity {
                 EditText numberBox = findViewById(R.id.phoneNumber);
                 int number = Integer.parseInt(numberBox.getText().toString());
                 Handler.contacts.add(new Contact(name, number));
-                startActivity(new Intent(context, MainActivity.class));
-                finish();
+                nameBox.setText("");
+                numberBox.setText("");
             }
         });
     }
