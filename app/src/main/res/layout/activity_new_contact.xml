@@ -49,19 +49,20 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="221dp"
+            android:layout_width="123dp"
             android:layout_height="56dp"
             android:layout_weight="3"
             android:text="Phone Number:" />
 
         <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
+            android:id="@+id/phoneNumber"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="8"
+            android:layout_weight="3"
             android:ems="10"
-            android:hint="i.e. (000)-000-0000"
-            android:inputType="textPersonName" />
+            android:inputType="phone"
+            android:hint="i.e. (000)-000-0000" />
+
     </LinearLayout>
 
     <LinearLayout

@@ -17,6 +17,7 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
         setTitle("Contact Options");
         final EditActivity context = this;
+        Intent intent = getIntent();
 
         Button returnButton = findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
