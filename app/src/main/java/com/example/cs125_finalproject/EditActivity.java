@@ -22,7 +22,6 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
         setTitle("Contact Options");
         final EditActivity context = this;
-        Intent intent = getIntent();
 
         Button returnButton = findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +63,6 @@ public class EditActivity extends AppCompatActivity {
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    /** to be filled */
                     Handler.contacts.remove(c);
                     fillList();
                 }

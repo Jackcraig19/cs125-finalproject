@@ -15,7 +15,6 @@ public class NewContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_contact);
         final NewContactActivity context = this;
-        final Intent intent = getIntent();
 
         Button returnButton = findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -29,13 +28,17 @@ public class NewContactActivity extends AppCompatActivity {
         addContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText nameBox = findViewById(R.id.name_input);
-                String name = nameBox.getText().toString();
-                EditText numberBox = findViewById(R.id.phoneNumber);
-                int number = Integer.parseInt(numberBox.getText().toString());
-                Handler.contacts.add(new Contact(name, number));
-                nameBox.setText("");
-                numberBox.setText("");
+                try {
+                    EditText nameBox = findViewById(R.id.name_input);
+                    String name = nameBox.getText().toString();
+                    EditText numberBox = findViewById(R.id.phoneNumber);
+                    long number = Long.parseLong(numberBox.getText().toString());
+                    Handler.contacts.add(new Contact(name, number));
+                    nameBox.setText("");
+                    numberBox.setText("");
+                } catch (Exception e) {
+                    return;
+                }
             }
         });
     }
