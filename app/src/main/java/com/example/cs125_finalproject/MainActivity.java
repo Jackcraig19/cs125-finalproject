@@ -17,8 +17,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     //for testing purposes
-    private String phoneNo = "2242410728";
-    private String message = "Test Message";
+    public String phoneNo = "2242410728";
+    public String message = "Test Message";
 
 
     @Override
@@ -54,23 +54,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    protected void sendSMSMessage() {
-
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.SEND_SMS)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.SEND_SMS)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.SEND_SMS},
-                        MY_PERMISSIONS_REQUEST_SEND_SMS);
-            }
+    public void sendSMSMessage() {
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNo, null, message, null, null);
+            Toast.makeText(getApplicationContext(), "SMS Sent!",
+                    Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(),
+                    "SMS faild, please try again later!",
+                    Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_SEND_SMS: {
                 if (grantResults.length > 0
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(),
-                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+                            "SMS failed, please try again.", Toast.LENGTH_LONG).show();
                     return;
                 }
             }
