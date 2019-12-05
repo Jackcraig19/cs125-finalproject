@@ -2,6 +2,7 @@ package com.example.cs125_finalproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,7 +38,7 @@ public class NewContactActivity extends AppCompatActivity {
                     nameBox.setText("");
                     numberBox.setText("");
                 } catch (Exception e) {
-                    return;
+                    Log.e("Error", "Error", e);
                 }
             }
         });

@@ -31,7 +31,7 @@ public class MessageBuilder {
         responseMap.put("yes", yesList);
     }
 
-    private String getResponse(String message) {
+    public static String getResponse(String message, String name) {
         String[] msgArray = message.split(" ");
         StringBuilder toSend = new StringBuilder();
         for (String s : msgArray) {
