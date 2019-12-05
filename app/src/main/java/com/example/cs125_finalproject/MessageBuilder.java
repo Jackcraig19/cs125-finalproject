@@ -41,6 +41,9 @@ public class MessageBuilder {
                 toSend.append(" ");
             }
         }
+        if (toSend.length() == 0) {
+            toSend.append("Sorry, can't talk right now.");
+        }
         return toSend.toString();
     }
 }
