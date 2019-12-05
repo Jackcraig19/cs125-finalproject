@@ -55,28 +55,25 @@ public class SmsReceiver extends BroadcastReceiver {
                 Log.d("SmsReceiverDebug", "SmsReceiverDebug: " + msgs[0].getMessageBody() + " from " + msgs[0].getOriginatingAddress());
                 //Toast.makeText(context, strMessage, Toast.LENGTH_LONG).show();
                 for (Contact toSend : Handler.contacts) {
-                    if (msgs[0].getOriginatingAddress().equals("+" + toSend.getNumber())
+                    if (toSend.getState()
+                    && (msgs[0].getOriginatingAddress().equals("+" + toSend.getNumber())
                     || msgs[0].getOriginatingAddress().equals("+1" + toSend.getNumber())
-                    || msgs[0].getOriginatingAddress().equals(toSend.getNumber())) {
-                        sendSMSMessage(msgs[0].getMessageBody());
+                    || msgs[0].getOriginatingAddress().equals(toSend.getNumber()))) {
+                        sendSMSMessage(msgs[0].getMessageBody(), toSend);
                         break;
                     }
                 }
             }
         }
     }
-    private void sendSMSMessage(String msgToRespond) {
-        for (Contact toSend : Handler.contacts) {
-            if (toSend.getState()) {
-                try {
-                    SmsManager smsManager = SmsManager.getDefault();
-                    String text = getResponse(msgToRespond) + " (Test)";
-                    smsManager.sendTextMessage(toSend.getNumber(), null, text, null, null);
-                } catch (Exception e) {
-                    Log.e(TAG, "[Error]", e);
-                    e.printStackTrace();
-                }
-            }
+    private void sendSMSMessage(String msgToRespond, Contact toSend) {
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            String text = getResponse(msgToRespond) + " (Test)";
+            smsManager.sendTextMessage(toSend.getNumber(), null, text, null, null);
+        } catch (Exception e) {
+            Log.e(TAG, "[Error]", e);
+            e.printStackTrace();
         }
     }
     private String getResponse(String message) {
