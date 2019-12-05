@@ -9,16 +9,11 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
-import android.widget.Toast;
-
-import java.lang.annotation.Target;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SmsReceiver extends BroadcastReceiver {
     private static final String TAG = SmsReceiver.class.getSimpleName();
     public static final String pdu_type = "pdus";
+<<<<<<< HEAD
     private static Map<String, String[]> responseMap = new HashMap<>();
 
     public static void setupMessages() {
@@ -44,6 +39,8 @@ public class SmsReceiver extends BroadcastReceiver {
         String[] yesList = {"OK!", "Awesome!", "Yeah!!", "okie doke", "sounds good", "yes??!!"};
         responseMap.put("yes", yesList);
     }
+=======
+>>>>>>> 63f0973f9395efe07899400a579dc3a33598bab9
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
@@ -78,11 +75,10 @@ public class SmsReceiver extends BroadcastReceiver {
     private void sendSMSMessage(String msgToRespond, Contact toSend) {
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            String text = getResponse(msgToRespond) + " (Test)";
+            String text = MessageBuilder.getResponse(msgToRespond, toSend.getName()) + " (Test)";
             smsManager.sendTextMessage(toSend.getNumber(), null, text, null, null);
         } catch (Exception e) {
             Log.e(TAG, "[Error]", e);
         }
     }
-
 }
