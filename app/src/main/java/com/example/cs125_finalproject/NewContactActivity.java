@@ -32,7 +32,7 @@ public class NewContactActivity extends AppCompatActivity {
                     EditText nameBox = findViewById(R.id.name_input);
                     String name = nameBox.getText().toString();
                     EditText numberBox = findViewById(R.id.phoneNumber);
-                    long number = Long.parseLong(numberBox.getText().toString());
+                    String number = numberBox.getText().toString();
                     Handler.contacts.add(new Contact(name, number));
                     nameBox.setText("");
                     numberBox.setText("");

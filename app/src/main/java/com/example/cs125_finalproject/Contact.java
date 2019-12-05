@@ -2,17 +2,17 @@ package com.example.cs125_finalproject;
 
 public class Contact {
     private String name;
-    private long number;
+    private String number;
     private boolean toggleState = false;
 
-    public Contact(String setName, long setNum) {
+    public Contact(String setName, String setNum) {
         name = setName;
         number = setNum;
     }
     public String getName() {
         return name;
     }
-    public long getNumber() {
+    public String getNumber() {
         return number;
     }
     public boolean getState() {
