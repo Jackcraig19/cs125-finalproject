@@ -13,34 +13,6 @@ import android.util.Log;
 public class SmsReceiver extends BroadcastReceiver {
     private static final String TAG = SmsReceiver.class.getSimpleName();
     public static final String pdu_type = "pdus";
-<<<<<<< HEAD
-    private static Map<String, String[]> responseMap = new HashMap<>();
-
-    public static void setupMessages() {
-        String[] greetingsList = {"hello!", "hi.", "howdy ;)", "greetings...", "hey!"};
-        for (String s1 : greetingsList)
-            responseMap.put(s1.replaceAll("\\W", ""), greetingsList);
-        String[] salutationsList = {"bye!", "goodbye.", "peace :P", "adios <3"};
-        for (String s1 : salutationsList)
-            responseMap.put(s1.replaceAll("\\W", ""), salutationsList);
-        String[] catList = {"I love cats!", "I hate cats."};
-        responseMap.put("cat", catList);
-        responseMap.put("cats", catList);
-        String[] jackList = {"Jack is great!", "Jack is the chief of police."};
-        responseMap.put("jack", jackList);
-        String[] familyList = {"The family is great!", "Everyone is doing well.", "Don't talk to me about my family."};
-        responseMap.put("family", familyList);
-        String[] csList = {"Did you forget a semicolon?", "Idk, ask on the forum.", "Maybe you have a typo.", "Did you try rebooting?"};
-        String[] csPrompts = {"cs125", "cs", "computer", "code", "programming", "app", "program"};
-        for (String s : csPrompts)
-            responseMap.put(s, csList);
-        String[] noList = {"Ok.", "hmmm...", "Interesting", "Alright then."};
-        responseMap.put("no", noList);
-        String[] yesList = {"OK!", "Awesome!", "Yeah!!", "okie doke", "sounds good", "yes??!!"};
-        responseMap.put("yes", yesList);
-    }
-=======
->>>>>>> 63f0973f9395efe07899400a579dc3a33598bab9
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override

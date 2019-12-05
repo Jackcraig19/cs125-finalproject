@@ -8,34 +8,39 @@ public class MessageBuilder {
     private static Map<String, String[]> responseMap = new HashMap<>();
 
     public static void setupMessages() {
-        String[] greetingsList = {"hello", "hi", "howdy", "greetings"};
+        String[] greetingsList = {"hello!", "hi.", "howdy ;)", "greetings...", "hey!"};
         for (String s1 : greetingsList)
-            responseMap.put(s1, greetingsList);
-        String[] salutationsList = {"bye", "goodbye", "peace", "adios"};
+            responseMap.put(s1.replaceAll("\\W", ""), greetingsList);
+        String[] salutationsList = {"bye!", "goodbye.", "peace :P", "adios <3"};
         for (String s1 : salutationsList)
-            responseMap.put(s1, salutationsList);
-        String[] catList = {"I love cats", "I hate cats"};
+            responseMap.put(s1.replaceAll("\\W", ""), salutationsList);
+        String[] catList = {"I love cats!", "I hate cats."};
         responseMap.put("cat", catList);
         responseMap.put("cats", catList);
+        String[] jackList = {"Jack is great!", "Jack is the chief of police."};
+        responseMap.put("jack", jackList);
+        String[] familyList = {"The family is great!", "Everyone is doing well.", "Don't talk to me about my family."};
+        responseMap.put("family", familyList);
+        String[] csList = {"Did you forget a semicolon?", "Idk, ask on the forum.", "Maybe you have a typo.", "Did you try rebooting?"};
+        String[] csPrompts = {"cs125", "cs", "computer", "code", "programming", "app", "program"};
+        for (String s : csPrompts)
+            responseMap.put(s, csList);
+        String[] noList = {"Ok.", "hmmm...", "Interesting", "Alright then."};
+        responseMap.put("no", noList);
+        String[] yesList = {"OK!", "Awesome!", "Yeah!!", "okie doke", "sounds good", "yes??!!"};
+        responseMap.put("yes", yesList);
     }
 
-    public static String getResponse(String message, String name) {
+    private String getResponse(String message) {
         String[] msgArray = message.split(" ");
-        return buildMessage(msgArray, name);
-    }
-    private static String buildMessage(String[] message, String name) {
-        String thisAddition;
-        for (int i = 0; i < message.length; i++) {
-            String[] r = responseMap.get(message[i].toLowerCase().replaceAll("\\W", ""));
+        StringBuilder toSend = new StringBuilder();
+        for (String s : msgArray) {
+            String[] r = responseMap.get(s.toLowerCase().replaceAll("\\W",""));
             if (r != null) {
-                if (i + 1 < message.length)
-                    message = Arrays.copyOfRange(message, i + 1, message.length);
-                else
-                    message = new String[0];
-                thisAddition = r[(int) (Math.random() * r.length)];
-                return thisAddition + " " + buildMessage(message, name);
+                toSend.append(r[(int)(Math.random() * r.length)]);
+                toSend.append(" ");
             }
         }
-        return "";
+        return toSend.toString();
     }
 }
