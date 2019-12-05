@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void sendSMSMessage() {
+    private void sendSMSMessage() {
         for (Contact toSend : Handler.contacts) {
             if (toSend.getState()) {
                 try {

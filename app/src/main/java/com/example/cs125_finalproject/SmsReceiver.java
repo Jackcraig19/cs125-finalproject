@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
@@ -36,6 +37,27 @@ public class SmsReceiver extends BroadcastReceiver {
                 strMessage += " :" + msgs[i].getMessageBody() + "\n";
                 Log.d(TAG, "onReceive: " + strMessage);
                 Toast.makeText(context, strMessage, Toast.LENGTH_LONG).show();
+
+                for (Contact toSend : Handler.contacts) {
+                    if (msgs[i].getOriginatingAddress().equals("+" + toSend.getNumber())
+                    || msgs[i].getOriginatingAddress().equals("+1" + toSend.getNumber())) {
+                        sendSMSMessage();
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    }
+    private void sendSMSMessage() {
+        for (Contact toSend : Handler.contacts) {
+            if (toSend.getState()) {
+                try {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(toSend.getNumber(), null, "Auto Reply", null, null);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
