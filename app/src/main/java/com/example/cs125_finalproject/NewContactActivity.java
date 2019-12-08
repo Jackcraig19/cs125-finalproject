@@ -89,7 +89,7 @@ public class NewContactActivity extends AppCompatActivity {
                         if (num.length() == 11) {
                             num = num.substring(1);
                         }
-                        Log.d("number format", name + "    " + number);
+                        //Log.d("number format", number + "\t\t\t" + num + "\t\t\t" + name);
                         if (num.length() == 10) {
                             Contact toAdd = new Contact(name, num);
                             if (!Handler.contacts.contains(toAdd)) {
@@ -117,7 +117,7 @@ public class NewContactActivity extends AppCompatActivity {
                 String name = cur.getString(cur.getColumnIndex(
                         ContactsContract.Contacts.DISPLAY_NAME));
                 nameList.add(name);
-                if (cur.getInt(cur.getColumnIndex( ContactsContract.Contacts.HAS_PHONE_NUMBER)) > 0) {
+                if (cur.getInt(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)) > 0) {
                     Cursor pCur = cr.query(
                             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                             null,
