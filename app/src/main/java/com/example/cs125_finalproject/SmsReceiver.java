@@ -19,7 +19,6 @@ public class SmsReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
         SmsMessage[] msgs;
-        //String strMessage = "";
         String format = bundle.getString("format");
         Object[] pdus = (Object[]) bundle.get(pdu_type);
         if (pdus != null) {
@@ -33,10 +32,7 @@ public class SmsReceiver extends BroadcastReceiver {
                 }
                 Log.d("SmsReceiverDebug", "SmsReceiverDebug: " + msgs[0].getMessageBody() + " from " + msgs[0].getOriginatingAddress());
                 for (Contact toSend : Handler.contacts) {
-                    if (toSend.getState()
-                    && (msgs[0].getOriginatingAddress().equals("+" + toSend.getNumber())
-                    || msgs[0].getOriginatingAddress().equals("+1" + toSend.getNumber())
-                    || msgs[0].getOriginatingAddress().equals(toSend.getNumber()))) {
+                    if (toSend.getState() && msgs[0].getOriginatingAddress().equals("+1" + toSend.getNumber())) {
                         sendSMSMessage(msgs[0].getMessageBody(), toSend);
                         break;
                     }

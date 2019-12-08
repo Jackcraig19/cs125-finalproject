@@ -21,4 +21,15 @@ public class Contact {
     public void setState(boolean set) {
         toggleState = set;
     }
+
+    public boolean equals(Object check) {
+        if (check == null) {
+            return false;
+        }
+        if (check instanceof Contact) {
+            Contact checkContact = (Contact) check;
+            return name.equals(checkContact.getName()) && number.equals(checkContact.getNumber());
+        }
+        return false;
+    }
 }
