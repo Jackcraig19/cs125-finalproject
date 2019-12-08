@@ -9,16 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     //for testing purposes
-    public String message = "Test Message2";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,23 +45,5 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
-
-    private void sendSMSMessage() {
-        for (Contact toSend : Handler.contacts) {
-            if (toSend.getState()) {
-                try {
-                    SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(toSend.getNumber(), null, message, null, null);
-                    Toast.makeText(getApplicationContext(), "SMS Sent!",
-                            Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(),
-                            "SMS faild, please try again later!",
-                            Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 }
