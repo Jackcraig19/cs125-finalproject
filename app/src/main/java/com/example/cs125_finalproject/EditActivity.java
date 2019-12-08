@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Space;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -44,7 +45,9 @@ public class EditActivity extends AppCompatActivity {
             TextView nameView = testChunk.findViewById(R.id.name);
             nameView.setText(c.getName());
             TextView numberView = testChunk.findViewById(R.id.number);
-            numberView.setText(String.valueOf(c.getNumber()));
+            String number = c.getNumber();
+            number = number.substring(0,3) + "-" + number.substring(3, 6) + "-" + number.substring(6);
+            numberView.setText(number);
 
             final Switch toggleSwitch = testChunk.findViewById(R.id.toggle);
             toggleSwitch.setChecked(c.getState());
@@ -68,6 +71,10 @@ public class EditActivity extends AppCompatActivity {
                 }
             });
             parent.addView(testChunk);
+
+            Space space = new Space(this);
+            space.setMinimumHeight(6);
+            parent.addView(space);
         }
 
     }

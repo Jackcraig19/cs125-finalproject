@@ -49,14 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        Button test = findViewById(R.id.testButton);
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendSMSMessage();
-            }
-        });
     }
 
     private void sendSMSMessage() {
