@@ -70,34 +70,36 @@ public class NewContactActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.READ_CONTACTS}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-                }
-                getAllContacts();
-                for(int i = 0; i < numberList.size() && i < nameList.size(); i++) {
-                    String name = nameList.get(i);
-                    String number = numberList.get(i);
-                    String num = "";
-                    for(int j = 0; j < number.length(); j++) {
-                        try {
-                            String digit = number.substring(j, j + 1);
-                            Integer.parseInt(digit);
-                            num = num + digit;
-                        } catch (Exception e) {
-                            //illegal character, do nothing
+                    Toast.makeText(context, "Contacts could not be filled", Toast.LENGTH_LONG).show();
+                } else {
+                    getAllContacts();
+                    for (int i = 0; i < numberList.size() && i < nameList.size(); i++) {
+                        String name = nameList.get(i);
+                        String number = numberList.get(i);
+                        String num = "";
+                        for (int j = 0; j < number.length(); j++) {
+                            try {
+                                String digit = number.substring(j, j + 1);
+                                Integer.parseInt(digit);
+                                num = num + digit;
+                            } catch (Exception e) {
+                                //illegal character, do nothing
+                            }
+                        }
+                        if (num.length() == 11) {
+                            num = num.substring(1);
+                        }
+                        Log.d("number format", name + "    " + number);
+                        if (num.length() == 10) {
+                            Contact toAdd = new Contact(name, num);
+                            if (!Handler.contacts.contains(toAdd)) {
+                                toAdd.setState(false);
+                                Handler.contacts.add(toAdd);
+                            }
                         }
                     }
-                    if (num.length() == 11) {
-                        num = num.substring(1);
-                    }
-                    Log.d("number format", name + "    " + number);
-                    if (num.length() == 10) {
-                        Contact toAdd = new Contact(name, num);
-                        if (!Handler.contacts.contains(toAdd)) {
-                            toAdd.setState(false);
-                            Handler.contacts.add(toAdd);
-                        }
-                    }
+                    Toast.makeText(context, "Contacts Filled", Toast.LENGTH_LONG).show();
                 }
-                Toast.makeText(context, "Contacts Filled", Toast.LENGTH_LONG).show();
             }
         });
     }
