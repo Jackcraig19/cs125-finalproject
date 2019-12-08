@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,10 +29,6 @@ public class NewContactActivity extends AppCompatActivity {
         addContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Handler.contacts.size() == 9) {
-                    Toast.makeText(context, "Contacts Full", Toast.LENGTH_LONG).show();
-                    return;
-                }
                 try {
                     EditText nameBox = findViewById(R.id.name_input);
                     String name = nameBox.getText().toString();
