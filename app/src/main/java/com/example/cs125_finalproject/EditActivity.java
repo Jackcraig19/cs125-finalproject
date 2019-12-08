@@ -53,7 +53,10 @@ public class EditActivity extends AppCompatActivity {
         parent.removeAllViews();
         ArrayList<Contact> contacts = Handler.contacts;
         for (final Contact c : contacts) {
-            if (c.getName().contains(restriction) || c.getNumber().contains(restriction)) {
+            String re = restriction.toLowerCase();
+            String na = c.getName().toLowerCase();
+            String no = c.getNumber().toLowerCase();
+            if (na.contains(re) || no.contains(re)) {
                 Log.d("EditActivityDebug", "New Contact");
                 View testChunk = getLayoutInflater().inflate(R.layout.chunk_contact, parent, false);
                 TextView nameView = testChunk.findViewById(R.id.name);
