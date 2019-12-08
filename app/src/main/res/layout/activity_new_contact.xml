@@ -25,17 +25,18 @@
 
         <TextView
             android:id="@+id/name_tag"
-            android:layout_width="218dp"
+            android:layout_width="240dp"
             android:layout_height="56dp"
             android:layout_weight="3"
+            android:gravity="center"
             android:textColor="#000"
-            android:text="    Name:" />
+            android:text="Name:" />
 
         <EditText
             android:id="@+id/name_input"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_weight="8"
+            android:layout_weight="4"
             android:ems="10"
             android:inputType="textPersonName"
             android:textColor="#000"
@@ -53,17 +54,18 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="110dp"
+            android:layout_width="240dp"
             android:layout_height="56dp"
             android:layout_weight="3"
             android:textColor="#000"
-            android:text="    Phone Number:" />
+            android:gravity="center"
+            android:text="Phone Number:" />
 
         <EditText
             android:id="@+id/phoneNumber"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:ems="10"
             android:inputType="phone"
             android:textColor="#000"
