@@ -47,7 +47,7 @@ public class SmsReceiver extends BroadcastReceiver {
     private void sendSMSMessage(String msgToRespond, Contact toSend) {
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            String text = MessageBuilder.getResponse(msgToRespond, toSend.getName()) + " (Test)";
+            String text = MessageBuilder.getResponse(msgToRespond, toSend.getName());
             smsManager.sendTextMessage(toSend.getNumber(), null, text, null, null);
         } catch (Exception e) {
             Log.e(TAG, "[Error]", e);

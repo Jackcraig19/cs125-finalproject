@@ -29,6 +29,10 @@ public class MessageBuilder {
         responseMap.put("no", noList);
         String[] yesList = {"OK!", "Awesome!", "Yeah!!", "okie doke", "sounds good", "yes??!!"};
         responseMap.put("yes", yesList);
+        String[] plansList = {"Im down for anything ;)", "My parents arn't home this weekend if you know what I mean.", "I'm free later, wyd", "You have such nice lips"};
+        String[] plansResponse = {"wyd", "plans", "date", "romance", "boyfriend", "girlfriend", "later", "doing"};
+        for (String s : plansResponse)
+            responseMap.put(s, plansList);
     }
 
     public static String getResponse(String message, String name) {
