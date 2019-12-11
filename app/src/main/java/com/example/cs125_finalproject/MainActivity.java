@@ -11,6 +11,8 @@ import androidx.core.content.ContextCompat;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
@@ -27,6 +29,19 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, MY_PERMISSIONS_REQUEST_SEND_SMS);
         }
+
+        Switch disable = findViewById(R.id.disableSwitch);
+        disable.setChecked(Handler.disableAll);
+        disable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if (checked) {
+                    Handler.disableAll = true;
+                } else {
+                    Handler.disableAll = false;
+                }
+            }
+        });
 
         Button newContact = findViewById(R.id.new_contact_button);
         newContact.setOnClickListener(new View.OnClickListener() {

@@ -30,11 +30,13 @@ public class SmsReceiver extends BroadcastReceiver {
                 } else {
                     msgs[0] = SmsMessage.createFromPdu((byte[]) pdus[0]);
                 }
-                Log.d("SmsReceiverDebug", "SmsReceiverDebug: " + msgs[0].getMessageBody() + " from " + msgs[0].getOriginatingAddress());
-                for (Contact toSend : Handler.contacts) {
-                    if (toSend.getState() && msgs[0].getOriginatingAddress().equals("+1" + toSend.getNumber())) {
-                        sendSMSMessage(msgs[0].getMessageBody(), toSend);
-                        break;
+                //Log.d("SmsReceiverDebug", "SmsReceiverDebug: " + msgs[0].getMessageBody() + " from " + msgs[0].getOriginatingAddress());
+                if (!Handler.disableAll) {
+                    for (Contact toSend : Handler.contacts) {
+                        if (toSend.getState() && msgs[0].getOriginatingAddress().equals("+1" + toSend.getNumber())) {
+                            sendSMSMessage(msgs[0].getMessageBody(), toSend);
+                            break;
+                        }
                     }
                 }
             }

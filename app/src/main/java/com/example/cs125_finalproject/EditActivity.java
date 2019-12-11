@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -27,7 +26,7 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
         setTitle("Contact Options");
-
+        ((TextView) findViewById(R.id.contactLength)).setText("You Have " + Handler.contacts.size() + "Contacts");
 
         Button returnButton = findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +47,24 @@ public class EditActivity extends AppCompatActivity {
             }
         });
 
+        Button allToggle = findViewById(R.id.allToggle);
+        allToggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean allOff = true;
+                for (Contact con : Handler.contacts) {
+                    if (con.getState()) {
+                        allOff = false;
+                        break;
+                    }
+                }
+                for (Contact con : Handler.contacts) {
+                    con.setState(allOff);
+                }
+                fillList();
+            }
+        });
+
         fillList();
     }
 
@@ -55,12 +72,13 @@ public class EditActivity extends AppCompatActivity {
         LinearLayout parent = findViewById(R.id.contactLayout);
         parent.removeAllViews();
         ArrayList<Contact> contacts = Handler.contacts;
+        ((TextView) findViewById(R.id.contactLength)).setText("You Have " + contacts.size() + " Contacts");
+
         for (final Contact c : contacts) {
             String re = restriction.toLowerCase();
             String na = c.getName().toLowerCase();
             String no = c.getNumber().toLowerCase();
             if (na.contains(re) || no.contains(re)) {
-                Log.d("EditActivityDebug", "New Contact");
                 View testChunk = getLayoutInflater().inflate(R.layout.chunk_contact, parent, false);
                 TextView nameView = testChunk.findViewById(R.id.name);
                 nameView.setText(c.getName());
@@ -73,8 +91,8 @@ public class EditActivity extends AppCompatActivity {
                 toggleSwitch.setChecked(c.getState());
                 toggleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (toggleSwitch.isChecked()) {
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                        if (checked) {
                             c.setState(true);
                         } else {
                             c.setState(false);
