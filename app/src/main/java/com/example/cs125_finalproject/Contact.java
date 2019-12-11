@@ -21,6 +21,7 @@ public class Contact {
     public void setState(boolean set) {
         toggleState = set;
     }
+    public void setName(String setName) { name = setName; }
 
     public boolean equals(Object check) {
         if (check == null) {
@@ -28,7 +29,7 @@ public class Contact {
         }
         if (check instanceof Contact) {
             Contact checkContact = (Contact) check;
-            return name.equals(checkContact.getName()) && number.equals(checkContact.getNumber());
+            return number.equals(checkContact.getNumber());
         }
         return false;
     }

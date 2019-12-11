@@ -7,32 +7,32 @@ public class MessageBuilder {
     private static Map<String, String[]> responseMap = new HashMap<>();
 
     public static void setupMessages() {
-        String[] greetingsList = {"hello!", "hi.", "howdy ;)", "greetings...", "hey!", "Whats up, /name?"};
+        String[] greetingsList = {"hello!", "hi.", "howdy ;)", "greetings...", "hey!", "Whats up, /name/?"};
         for (String s1 : greetingsList)
             responseMap.put(s1.replaceAll("\\W", ""), greetingsList);
-        String[] salutationsList = {"bye!", "goodbye.", "peace :P", "adios <3", "Farewell /name..."};
+        String[] salutationsList = {"bye!", "goodbye.", "peace :P", "adios <3", "Farewell /name/..."};
         for (String s1 : salutationsList)
             responseMap.put(s1.replaceAll("\\W", ""), salutationsList);
-        String[] catList = {"I love cats!", "I hate cats.", "/name, cats are not quite as good as dogs"};
+        String[] catList = {"I love cats!", "I hate cats.", "/name/, cats are not quite as good as dogs"};
         responseMap.put("cat", catList);
         responseMap.put("cats", catList);
-        String[] jackList = {"Jack is great!", "Jack is not the chief of police."};
+        String[] jackList = {"Jack is great!", "Jack is not the chief of police.", "/name/...\nwhy are you talking about Jack? Let's talk about Inigo ;P"};
         responseMap.put("jack", jackList);
-        String[] familyList = {"The family is great!", "Everyone is doing well.", "Don't talk to me about my family."};
+        String[] familyList = {"The family is great!", "Everyone is doing well.", "Don't talk to me about my family.", "How's your family, /name/?"};
         responseMap.put("family", familyList);
-        String[] csList = {"Did you forget a semicolon?", "Idk, ask on the forum.", "Maybe you have a typo.", "Did you try rebooting?", "Figure it out, /name"};
+        String[] csList = {"Did you forget a semicolon?", "Idk, ask on the forum.", "Maybe you have a typo.", "Did you try rebooting?", "Figure it out, /name/"};
         String[] csPrompts = {"cs125", "cs", "computer", "code", "programming", "app", "program"};
         for (String s : csPrompts)
             responseMap.put(s, csList);
-        String[] noList = {"Ok.", "hmmm...", "Interesting", "Alright then."};
+        String[] noList = {"Ok.", "hmmm...", "Interesting", "Alright then.", "bruh", "That settles it"};
         responseMap.put("no", noList);
-        String[] yesList = {"OK!", "Awesome!", "Yeah!!", "okie doke", "sounds good", "yes??!!"};
+        String[] yesList = {"OK!", "Awesome!", "Yeah!!", "okie doke", "sounds good, /name/", "yes??!!"};
         responseMap.put("yes", yesList);
-        String[] plansList = {"Im down for anything ;)", "My parents aren't home this weekend if you know what I mean.", "I'm free later, wyd", "You have such nice lips"};
+        String[] plansList = {"Im down for anything ;)", "My parents aren't home this weekend if you know what I mean.", "I'm free later, wyd", "You have such nice lips, /name/"};
         String[] plansResponse = {"wyd", "plans", "date", "romance", "boyfriend", "girlfriend", "later", "doing"};
         for (String s : plansResponse)
             responseMap.put(s, plansList);
-        String[] geoffList = {"All Hail Geoff", "Geoff is my dad", "Praise the lord, our savior, Geoffrey Challen.", "I love Geoff, whats your favorite thing about him /name?"};
+        String[] geoffList = {"All Hail Geoff", "Geoff is my dad", "Praise the lord, our savior, Geoffrey Challen.", "I love Geoff, whats your favorite thing about him?"};
         String[] geoffPrompts = {"geoff", "challen", "cs125 professor"};
         for (String s : geoffPrompts) {
             responseMap.put(s, geoffList);
@@ -52,6 +52,6 @@ public class MessageBuilder {
         if (toSend.length() == 0) {
             toSend.append("Sorry, can't talk right now.");
         }
-        return toSend.toString().replace("/name", name);
+        return toSend.toString().replace("/name/", name);
     }
 }

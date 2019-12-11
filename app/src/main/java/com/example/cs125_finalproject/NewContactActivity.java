@@ -48,18 +48,23 @@ public class NewContactActivity extends AppCompatActivity {
                     String name = nameBox.getText().toString();
                     EditText numberBox = findViewById(R.id.phoneNumber);
                     String number = numberBox.getText().toString();
-                    Long.parseLong(number);
+                    number = format(number);
                     if (number.length() != 10) {
                         throw new Exception();
                     }
                     if (name.equals("")) {
                         name = "No Name";
                     }
-                    Handler.contacts.add(new Contact(name, number));
+                    Contact c = new Contact(name, number);
+                    if (Handler.contacts.contains(c)) {
+                        Toast.makeText(context, "Contact already exists", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    Handler.contacts.add(c);
                     nameBox.setText("");
                     numberBox.setText("");
                 } catch (Exception e) {
-                    Log.e("Error", "Error", e);
+                    Toast.makeText(context, "Invalid Number", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -76,22 +81,10 @@ public class NewContactActivity extends AppCompatActivity {
                     for (int i = 0; i < numberList.size() && i < nameList.size(); i++) {
                         String name = nameList.get(i);
                         String number = numberList.get(i);
-                        String num = "";
-                        for (int j = 0; j < number.length(); j++) {
-                            try {
-                                String digit = number.substring(j, j + 1);
-                                Integer.parseInt(digit);
-                                num = num + digit;
-                            } catch (Exception e) {
-                                //illegal character, do nothing
-                            }
-                        }
-                        if (num.length() == 11) {
-                            num = num.substring(1);
-                        }
+                        number = format(number);
                         //Log.d("number format", number + "\t\t\t" + num + "\t\t\t" + name);
-                        if (num.length() == 10) {
-                            Contact toAdd = new Contact(name, num);
+                        if (number.length() == 10) {
+                            Contact toAdd = new Contact(name, number);
                             if (!Handler.contacts.contains(toAdd)) {
                                 toAdd.setState(false);
                                 Handler.contacts.add(toAdd);
@@ -102,6 +95,22 @@ public class NewContactActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private String format(String number) {
+        String num = "";
+        for (int j = 0; j < number.length(); j++) {
+            try {
+                String digit = number.substring(j, j + 1);
+                Integer.parseInt(digit);
+                num = num + digit;
+            } catch (Exception e) {
+                //illegal character, do nothing
+            }
+        }
+        if (num.length() == 11) {
+            num = num.substring(1);
+        }
+        return num;
     }
     private void getAllContacts() {
         nameList = new ArrayList<>();
