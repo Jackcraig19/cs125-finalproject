@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, NewContactActivity.class));
-                finish();
             }
         });
 
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(context, EditActivity.class));
-                finish();
             }
         });
     }
