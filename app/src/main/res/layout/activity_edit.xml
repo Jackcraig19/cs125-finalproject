@@ -66,6 +66,11 @@
             android:text="All On/Off" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="#000" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
