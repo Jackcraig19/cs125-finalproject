@@ -1,10 +1,12 @@
 package com.example.cs125_finalproject;
 
 import android.app.AlertDialog;
+import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -12,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,11 +31,13 @@ public class EditActivity extends AppCompatActivity {
         setTitle("Contact Options");
         ((TextView) findViewById(R.id.contactLength)).setText("You Have " + Handler.contacts.size() + "Contacts");
 
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         Button returnButton = findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CONTEXT, MainActivity.class));
                 finish();
             }
         });
@@ -136,6 +141,5 @@ public class EditActivity extends AppCompatActivity {
                 parent.addView(space);
             }
         }
-
     }
 }
