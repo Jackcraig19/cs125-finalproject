@@ -29,7 +29,7 @@ public class MessageBuilder {
         String[] yesList = {"OK!", "Awesome!", "Yeah!!", "okie doke", "sounds good, /name/", "yes??!!"};
         responseMap.put("yes", yesList);
         String[] plansList = {"Im down for anything ;)", "My parents aren't home this weekend if you know what I mean.", "I'm free later, wyd", "You have such nice lips, /name/"};
-        String[] plansResponse = {"wyd", "plans", "date", "romance", "boyfriend", "girlfriend", "later", "doing"};
+        String[] plansResponse = {"wyd", "plans", "date", "romance", "boyfriend", "girlfriend", "later", "doing", "free", "tonight", "plan"};
         for (String s : plansResponse)
             responseMap.put(s, plansList);
         String[] geoffList = {"All Hail Geoff", "Geoff is my dad", "Praise the lord, our savior, Geoffrey Challen.", "I love Geoff, whats your favorite thing about him?"};
