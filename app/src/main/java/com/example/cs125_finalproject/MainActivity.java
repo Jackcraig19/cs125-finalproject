@@ -9,10 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
@@ -58,5 +60,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(context, EditActivity.class));
             }
         });
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(this, "Activity Destroyed", Toast.LENGTH_LONG);
+        Log.d("Activity/debug", "Destroyed");
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        Toast.makeText(this, "Activity Stopped", Toast.LENGTH_LONG);
+        Log.d("Activity/debug", "Stopped");
     }
 }
