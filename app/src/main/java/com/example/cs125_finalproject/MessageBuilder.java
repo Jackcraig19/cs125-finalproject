@@ -16,15 +16,15 @@ public class MessageBuilder {
         String[] catList = {"I love cats!", "I hate cats.", "/name/, cats are not quite as good as dogs"};
         responseMap.put("cat", catList);
         responseMap.put("cats", catList);
-        String[] jackList = {"Jack is great!", "Jack is not the chief of police.", "/name/...\nwhy are you talking about Jack? Let's talk about Inigo ;P"};
+        String[] jackList = {"bruh", "bruh", "Jack is great!", "Jack is not the chief of police.", "/name/...\nwhy are you talking about Jack? Let's talk about Inigo ;P", "bruh"};
         responseMap.put("jack", jackList);
         String[] familyList = {"The family is great!", "Everyone is doing well.", "Don't talk to me about my family.", "How's your family, /name/?"};
         responseMap.put("family", familyList);
-        String[] csList = {"Did you forget a semicolon?", "Idk, ask on the forum.", "Maybe you have a typo.", "Did you try rebooting?", "Figure it out, /name/"};
+        String[] csList = {"Did you forget a semicolon?", "Idk, ask on the forum.", "Maybe you have a typo.", "Did you try rebooting?", "Figure it out, /name/", "bruh"};
         String[] csPrompts = {"cs125", "cs", "computer", "code", "programming", "app", "program"};
         for (String s : csPrompts)
             responseMap.put(s, csList);
-        String[] noList = {"Ok.", "hmmm...", "Interesting", "Alright then.", "bruh", "That settles it"};
+        String[] noList = {"Ok.", "hmmm...", "Interesting", "Alright then.", "bruh", "That settles it", "\"ok\""};
         responseMap.put("no", noList);
         String[] yesList = {"OK!", "Awesome!", "Yeah!!", "okie doke", "sounds good, /name/", "yes??!!"};
         responseMap.put("yes", yesList);
@@ -37,21 +37,28 @@ public class MessageBuilder {
         for (String s : geoffPrompts) {
             responseMap.put(s, geoffList);
         }
+        String[] cursePrompt = {"shit", "fuck", "bitch", "poop", "poopoo", "peepee", "wiener", "ass", "hell", "dick", "cock"};
+        String[] curseResponse = {"Watch your tongue, /name/.", "you shouldn't say \"/prompt/\"", "Ha, /prompt/", "/prompt/ is a bad word."};
+        for (String s : cursePrompt) {
+            responseMap.put(s, curseResponse);
+        }
     }
 
     public static String getResponse(String message, String name) {
         String[] msgArray = message.split(" ");
         StringBuilder toSend = new StringBuilder();
         for (String s : msgArray) {
-            String[] r = responseMap.get(s.toLowerCase().replaceAll("\\W",""));
+            String prompt = s.toLowerCase().replaceAll("\\W","");
+            String[] r = responseMap.get(prompt);
             if (r != null) {
-                toSend.append(r[(int)(Math.random() * r.length)]);
+                String toAppend = r[(int)(Math.random() * r.length)];
+                toSend.append(toAppend.replace("/name/", name).replace("/prompt/", prompt));
                 toSend.append(" ");
             }
         }
         if (toSend.length() == 0) {
             toSend.append("Sorry, can't talk right now.");
         }
-        return toSend.toString().replace("/name/", name);
+        return toSend.toString();
     }
 }
