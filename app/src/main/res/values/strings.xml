@@ -35,7 +35,7 @@
     <string-array name="animal_response">
         <item>I love /p/!</item>
         <item>I hate /p/</item>
-        <item>I know that |/p/| is an animal\n\nSee, /n/, I am human!</item>
+        <item>I know that [/p/] is an animal\n\nSee, /n/, I am human!</item>
     </string-array>
     <string-array name="family_prompt">
         <item>mother</item><item>father</item><item>brother</item><item>sister</item>
