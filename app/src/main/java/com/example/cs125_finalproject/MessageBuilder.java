@@ -1,58 +1,56 @@
 package com.example.cs125_finalproject;
 
+import android.content.Context;
+import android.content.res.Resources;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class MessageBuilder {
     private static Map<String, String[]> responseMap = new HashMap<>();
 
-    public static void setupMessages(String[] contactNames) {
+    public static void setupMessages(Context context) {
         responseMap = new HashMap<>();
-        //String[] greetReply = Resources.getSystem().getStringArray(R.array.greet_response);
-        //String[] greetReply = res.getStringArray(R.array.greet_response);
-        String[] greetReply = {"hello!", "hi.", "howdy ;)", "greetings...", "hey!", "Whats up, /name/?"};
-        for (String s1 : greetReply)
-            responseMap.put(s1.replaceAll("\\W", ""), greetReply);
-        String[] salutationsList = {"bye!", "goodbye.", "peace :P", "adios <3", "Farewell /name/..."};
-        for (String s1 : salutationsList)
-            responseMap.put(s1.replaceAll("\\W", ""), salutationsList);
-        String[] catList = {"I love cats!", "I hate cats.", "/name/, cats are not quite as good as dogs"};
-        responseMap.put("cat", catList);
-        responseMap.put("cats", catList);
-        String[] jackList = {"bruh", "bruh", "Jack is great!", "Jack is not the chief of police.", "/name/...\nwhy are you talking about Jack? Let's talk about Inigo ;P", "bruh"};
-        responseMap.put("jack", jackList);
-        String[] familyList = {"The family is great!", "Everyone is doing well.", "Don't talk to me about my family.", "How's your family, /name/?"};
-        responseMap.put("family", familyList);
-        String[] csList = {"Did you forget a semicolon?", "Idk, ask on the forum.", "Maybe you have a typo.", "Did you try rebooting?", "Figure it out, /name/", "bruh"};
-        String[] csPrompts = {"cs125", "cs", "computer", "code", "programming", "app", "program"};
-        for (String s : csPrompts)
-            responseMap.put(s, csList);
-        String[] noList = {"Ok.", "hmmm...", "Interesting", "Alright then.", "bruh", "That settles it", "\"ok\""};
-        responseMap.put("no", noList);
-        String[] yesList = {"OK!", "Awesome!", "Yeah!!", "okie doke", "sounds good, /name/", "yes??!!"};
-        responseMap.put("yes", yesList);
-        String[] plansList = {"Im down for anything ;)", "My parents aren't home this weekend if you know what I mean.", "I'm free later, wyd", "You have such nice lips, /name/"};
-        String[] plansResponse = {"wyd", "plans", "date", "romance", "boyfriend", "girlfriend", "later", "doing", "free", "tonight", "plan"};
-        for (String s : plansResponse)
-            responseMap.put(s, plansList);
-        String[] geoffList = {"All Hail Geoff", "Geoff is my dad", "Praise the lord, our savior, Geoffrey Challen.", "I love Geoff, whats your favorite thing about him?"};
-        String[] geoffPrompts = {"geoff", "challen", "cs125 professor"};
-        for (String s : geoffPrompts) {
-            responseMap.put(s, geoffList);
+        Resources res = context.getResources();
+
+        String[] contactPrompt = new String[Handler.contacts.size()];
+        for (int i = 0; i < Handler.contacts.size(); i++) {
+            contactPrompt[i] = Handler.contacts.get(i).getName().split(" ")[0].toLowerCase();
         }
-        String[] cursePrompt = {"shit", "fuck", "bitch", "poop", "poopoo", "peepee", "wiener", "ass", "hell", "dick", "cock"};
-        String[] curseResponse = {"Watch your tongue, /name/.", "you shouldn't say \"/prompt/\"", "Ha, /prompt/", "/prompt/ is a bad word."};
-        for (String s : cursePrompt) {
-            responseMap.put(s, curseResponse);
+
+        //Filling map from /res/values/strings
+        for (String s : res.getStringArray(R.array.greet_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.greet_response));
         }
-        String[] botPrompt = {"bot", "robot", "chatbot", "reply"};
-        String[] botResponse = {"no...", "I am a human, /name/", "I am not a robot", "Maybe you're a robot", "alright you got me :)", "yes?"};
-        for (String s : botPrompt) {
-            responseMap.put(s, botResponse);
+        for (String s : res.getStringArray(R.array.farewell_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.farewell_response));
         }
-        String[] peopleReply = {"I love /prompt/", "I hate /prompt/.", "Who's /prompt/?"};
-        for (String s : contactNames) {
-            responseMap.put(s, peopleReply);
+        for (String s : res.getStringArray(R.array.animal_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.animal_response));
+        }
+        for (String s : res.getStringArray(R.array.family_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.family_response));
+        }
+        for (String s : res.getStringArray(R.array.cs_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.cs_response));
+        }
+        for (String s : res.getStringArray(R.array.no_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.no_response));
+        }
+        for (String s : res.getStringArray(R.array.yes_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.yes_response));
+        }
+        for (String s : res.getStringArray(R.array.curse_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.curse_response));
+        }
+        for (String s : res.getStringArray(R.array.bot_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.bot_response));
+        }
+        for (String s : contactPrompt) {
+            responseMap.put(s, res.getStringArray(R.array.contact_response));
+        }
+        for (String s : res.getStringArray(R.array.plan_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.plan_response));
         }
     }
 
@@ -64,7 +62,7 @@ public class MessageBuilder {
             String[] r = responseMap.get(prompt);
             if (r != null) {
                 String toAppend = r[(int)(Math.random() * r.length)];
-                toSend.append(toAppend.replace("/name/", name).replace("/prompt/", prompt));
+                toSend.append(toAppend.replace("/n/", name).replace("/p/", prompt));
                 toSend.append(" ");
             }
         }

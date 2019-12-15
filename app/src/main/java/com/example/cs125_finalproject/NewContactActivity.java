@@ -27,7 +27,7 @@ public class NewContactActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_contact);
-        final NewContactActivity context = this;
+        final NewContactActivity CONTEXT = this;
 
         Button returnButton = findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -54,14 +54,15 @@ public class NewContactActivity extends AppCompatActivity {
                     }
                     Contact c = new Contact(name, number);
                     if (Handler.contacts.contains(c)) {
-                        Toast.makeText(context, "Contact already exists", Toast.LENGTH_LONG).show();
+                        Toast.makeText(CONTEXT, "Contact already exists", Toast.LENGTH_LONG).show();
                         return;
                     }
                     Handler.contacts.add(c);
+                    MessageBuilder.setupMessages(CONTEXT);
                     nameBox.setText("");
                     numberBox.setText("");
                 } catch (Exception e) {
-                    Toast.makeText(context, "Invalid Number", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CONTEXT, "Invalid Number", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -70,9 +71,9 @@ public class NewContactActivity extends AppCompatActivity {
         autoFill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.READ_CONTACTS}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-                    Toast.makeText(context, "Contacts could not be filled", Toast.LENGTH_LONG).show();
+                if (ContextCompat.checkSelfPermission(CONTEXT, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(CONTEXT, new String[]{Manifest.permission.READ_CONTACTS}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+                    Toast.makeText(CONTEXT, "Contacts could not be filled", Toast.LENGTH_LONG).show();
                 } else {
                     getAllContacts();
                     for (int i = 0; i < numberList.size() && i < nameList.size(); i++) {
@@ -88,7 +89,8 @@ public class NewContactActivity extends AppCompatActivity {
                             }
                         }
                     }
-                    Toast.makeText(context, "Contacts Filled", Toast.LENGTH_LONG).show();
+                    MessageBuilder.setupMessages(CONTEXT);
+                    Toast.makeText(CONTEXT, "Contacts Filled", Toast.LENGTH_LONG).show();
                 }
             }
         });

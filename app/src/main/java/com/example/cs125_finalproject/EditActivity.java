@@ -78,11 +78,7 @@ public class EditActivity extends AppCompatActivity {
         parent.removeAllViews();
         ArrayList<Contact> contacts = Handler.contacts;
         ((TextView) findViewById(R.id.contactLength)).setText("You Have " + contacts.size() + " Contacts");
-        String[] conactNames = new String[contacts.size()];
-
-        for (int i = 0; i < contacts.size(); i++) {
-            final Contact c = contacts.get(i);
-            conactNames[i] = c.getName().split(" ")[0].toLowerCase();
+        for (final Contact c : Handler.contacts) {
             String re = restriction.toLowerCase();
             String na = c.getName().toLowerCase();
             String no = c.getNumber().toLowerCase();
@@ -144,6 +140,6 @@ public class EditActivity extends AppCompatActivity {
                 parent.addView(space);
             }
         }
-        MessageBuilder.setupMessages(conactNames);
+        MessageBuilder.setupMessages(CONTEXT);
     }
 }

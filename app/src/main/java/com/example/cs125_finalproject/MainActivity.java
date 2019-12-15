@@ -18,16 +18,14 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
-    //for testing purposes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final MainActivity context = this;
-        MessageBuilder.setupMessages(new String[]{});
+        final MainActivity CONTEXT = this;
+        MessageBuilder.setupMessages(CONTEXT);
 
-        //check for permissions and ask for them if needed
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, MY_PERMISSIONS_REQUEST_SEND_SMS);
         }
@@ -49,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         newContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(context, NewContactActivity.class));
+                startActivity(new Intent(CONTEXT, NewContactActivity.class));
             }
         });
 
@@ -57,20 +55,8 @@ public class MainActivity extends AppCompatActivity {
         editContacts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(context, EditActivity.class));
+                startActivity(new Intent(CONTEXT, EditActivity.class));
             }
         });
-    }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "Activity Destroyed", Toast.LENGTH_LONG);
-        Log.d("Activity/debug", "Destroyed");
-    }
-    @Override
-    public void onStop() {
-        super.onStop();
-        Toast.makeText(this, "Activity Stopped", Toast.LENGTH_LONG);
-        Log.d("Activity/debug", "Stopped");
     }
 }
