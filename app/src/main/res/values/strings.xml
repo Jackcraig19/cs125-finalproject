@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">EasyText</string>
+    <string-array name="greet_response">
+        <item>Hello!</item>
+        <item>hi</item>
+        <item>greetings...</item>
+        <item>hey!</item>
+    </string-array>
 </resources>

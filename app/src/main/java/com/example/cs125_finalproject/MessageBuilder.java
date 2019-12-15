@@ -6,10 +6,13 @@ import java.util.Map;
 public class MessageBuilder {
     private static Map<String, String[]> responseMap = new HashMap<>();
 
-    public static void setupMessages() {
-        String[] greetingsList = {"hello!", "hi.", "howdy ;)", "greetings...", "hey!", "Whats up, /name/?"};
-        for (String s1 : greetingsList)
-            responseMap.put(s1.replaceAll("\\W", ""), greetingsList);
+    public static void setupMessages(String[] contactNames) {
+        responseMap = new HashMap<>();
+        //String[] greetReply = Resources.getSystem().getStringArray(R.array.greet_response);
+        //String[] greetReply = res.getStringArray(R.array.greet_response);
+        String[] greetReply = {"hello!", "hi.", "howdy ;)", "greetings...", "hey!", "Whats up, /name/?"};
+        for (String s1 : greetReply)
+            responseMap.put(s1.replaceAll("\\W", ""), greetReply);
         String[] salutationsList = {"bye!", "goodbye.", "peace :P", "adios <3", "Farewell /name/..."};
         for (String s1 : salutationsList)
             responseMap.put(s1.replaceAll("\\W", ""), salutationsList);
@@ -41,6 +44,15 @@ public class MessageBuilder {
         String[] curseResponse = {"Watch your tongue, /name/.", "you shouldn't say \"/prompt/\"", "Ha, /prompt/", "/prompt/ is a bad word."};
         for (String s : cursePrompt) {
             responseMap.put(s, curseResponse);
+        }
+        String[] botPrompt = {"bot", "robot", "chatbot", "reply"};
+        String[] botResponse = {"no...", "I am a human, /name/", "I am not a robot", "Maybe you're a robot", "alright you got me :)", "yes?"};
+        for (String s : botPrompt) {
+            responseMap.put(s, botResponse);
+        }
+        String[] peopleReply = {"I love /prompt/", "I hate /prompt/.", "Who's /prompt/?"};
+        for (String s : contactNames) {
+            responseMap.put(s, peopleReply);
         }
     }
 

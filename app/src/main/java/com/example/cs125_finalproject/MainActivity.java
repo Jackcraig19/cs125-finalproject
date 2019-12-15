@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final MainActivity context = this;
-        MessageBuilder.setupMessages();
+        MessageBuilder.setupMessages(new String[]{});
 
         //check for permissions and ask for them if needed
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {

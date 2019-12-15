@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.Space;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -77,8 +78,11 @@ public class EditActivity extends AppCompatActivity {
         parent.removeAllViews();
         ArrayList<Contact> contacts = Handler.contacts;
         ((TextView) findViewById(R.id.contactLength)).setText("You Have " + contacts.size() + " Contacts");
+        String[] conactNames = new String[contacts.size()];
 
-        for (final Contact c : contacts) {
+        for (int i = 0; i < contacts.size(); i++) {
+            final Contact c = contacts.get(i);
+            conactNames[i] = c.getName().split(" ")[0].toLowerCase();
             String re = restriction.toLowerCase();
             String na = c.getName().toLowerCase();
             String no = c.getNumber().toLowerCase();
@@ -140,5 +144,6 @@ public class EditActivity extends AppCompatActivity {
                 parent.addView(space);
             }
         }
+        MessageBuilder.setupMessages(conactNames);
     }
 }
