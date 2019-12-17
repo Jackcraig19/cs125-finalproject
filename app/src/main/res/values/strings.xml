@@ -174,4 +174,21 @@
         <item>its gonna be gnarly</item>
         <item>for sure</item>
     </string-array>
+    <string-array name="joke_prompt">
+        <item>funny</item><item>joke</item><item>meme</item><item>jokes</item>
+        <item>memes</item><item>69</item><item>laugh</item><item>lol</item>
+        <item>ha</item><item>haha</item><item>hehe</item>
+    </string-array>
+    <string-array name="joke_response">
+        <item>Heres a joke&#8230; /n/!</item>
+        <item>69</item>
+        <item>nice</item>
+        <item>Uh-Oh&#8230; Stinky!</item>
+        <item>hehehe</item>
+        <item>LOL</item>
+    </string-array>
+    <string name="game_prompt">game</string>
+    <string-array name="game_response">
+        <item>I lost the Game</item>
+    </string-array>
 </resources>

@@ -67,6 +67,10 @@ public class MessageBuilder {
         for (String s : res.getStringArray(R.array.chad_prompt)) {
             responseMap.put(s, res.getStringArray(R.array.chad_response));
         }
+        for (String s : res.getStringArray(R.array.joke_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.joke_response));
+        }
+        responseMap.put(res.getString(R.string.game_prompt), res.getStringArray(R.array.game_response));
     }
 
     public static String getResponse(String message, String name) {
