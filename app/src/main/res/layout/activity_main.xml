@@ -3,17 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="255"
-    android:background="#888"
+    android:background="@color/colorBackGrey"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="132dp"
-        android:background="#F515"
+        android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="SMS Auto Responder"
-        android:textColor="#aaa"
+        android:textColor="@color/colorText"
         android:textSize="30sp" />
 
     <LinearLayout
@@ -57,8 +57,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="#F8F8F8" />
+        android:layout_height="75dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

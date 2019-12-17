@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">EasyText</string>
+    <string-array name="default_response">
+        <item>Sorry, can\'t talk right now.</item>
+        <item>Now\'s not a good time, text me later.</item>
+        <item>Hold that thought, I\'ll text you when I\'m free.</item>
+        <item>Super busy, I can respond in a bit.</item>
+        <item>I will get back to you, just give me a while.</item>
+    </string-array>
+    <string-array name="question_response">
+        <item>yes?</item>
+        <item>no?</item>
+        <item>maybe?</item>
+        <item>I don\'t know</item>
+        <item>Can you repeat the question?</item>
+    </string-array>
     <string-array name="greet_prompt">
         <item>hello</item><item>hey</item><item>hi</item>
         <item>howdy</item><item>yo</item><item>greetings</item>
@@ -9,7 +23,7 @@
         <item>Hello!</item>
         <item>hi</item>
         <item>howdy ;)</item>
-        <item>greetings...</item>
+        <item>greetings&#8230;</item>
         <item>hey!</item>
         <item>What\'s up, /n/</item>
         <item>yo</item>
@@ -24,7 +38,7 @@
         <item>goodbye</item>
         <item>peace :P</item>
         <item>adios!</item>
-        <item>Farewell, /n/...</item>
+        <item>Farewell, /n/&#8230;</item>
         <item>Goodbye, /n/.</item>
     </string-array>
     <string-array name="animal_prompt">
@@ -35,7 +49,8 @@
     <string-array name="animal_response">
         <item>I love /p/!</item>
         <item>I hate /p/</item>
-        <item>I know that [/p/] is an animal\n\nSee, /n/, I am human!</item>
+        <item>I know that [/p/] is an animal\nSee, /n/, I am human!</item>
+        <item>Rawr XD</item>
     </string-array>
     <string-array name="family_prompt">
         <item>mother</item><item>father</item><item>brother</item><item>sister</item>
@@ -52,8 +67,8 @@
         <item>no</item><item>nope</item><item>not</item><item>bad</item>
     </string-array>
     <string-array name="no_response">
-        <item>Ok.</item>
-        <item>hmmm...</item>
+        <item>OK.</item>
+        <item>hmmm&#8230;</item>
         <item>Interesting</item>
         <item>Alright then.</item>
         <item>bruh</item>
@@ -84,7 +99,7 @@
         <item>\"i NeEd HeLp\"</item>
         <item>It\s probably a typo</item>
         <item>bruh, you just texted cringe</item>
-        <item>Uh-oh...\nStinky!</item>
+        <item>Uh-oh&#8230;\nStinky!</item>
     </string-array>
     <string-array name="curse_prompt">
         <item>shit</item><item>fuck</item><item>bitch</item><item>poop</item><item>peepee</item>
@@ -103,7 +118,7 @@
     </string-array>
     <string-array name="bot_response">
         <item>I am not a robot</item>
-        <item>no...</item>
+        <item>no&#8230;</item>
         <item>I am human, /n/</item>
         <item>alright you got me :)</item>
         <item>maybe you\'re a robot</item>
@@ -116,8 +131,9 @@
         <item>Who\'s /p/?</item>
     </string-array>
     <string-array name="plan_prompt">
-        <item>wyd</item><item>free</item><item>tonight</item><item>later</item>
-        <item>plan</item><item>plans</item><item>date</item><item>tomorrow</item>
+        <item>wyd</item><item>free</item><item>tonight</item>
+        <item>later</item><item>busy</item><item>plan</item>
+        <item>plans</item><item>date</item><item>tomorrow</item>
     </string-array>
     <string-array name="plan_response">
         <item>I\'m not sure</item>
@@ -127,5 +143,18 @@
         <item>I\'ll get back to you</item>
         <item>some other time</item>
         <item>Sorry, /n/. Another time</item>
+    </string-array>
+    <string-array name="president_prompt">
+        <item>abe</item><item>lincoln</item><item>garfield</item><item>mckinley</item>
+        <item>president</item><item>presidents</item><item>assassinate</item>
+        <item>assassinated</item><item>tyrannis</item><item>assassination</item>
+    </string-array>
+    <string-array name="president_response">
+        <item>Sic Semper Tyrannis</item>
+        <item>Keep quiet</item>
+        <item>In time, /n/&#8230;</item>
+        <item>Patience for now&#8230;</item>
+        <item>Sic Semper Tyrannis</item>
+        <item>We can meet in the usual spot</item>
     </string-array>
 </resources>

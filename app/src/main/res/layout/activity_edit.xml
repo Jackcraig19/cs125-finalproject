@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#888">
+    android:background="@color/colorBackGrey">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center"
-        android:background="#505"
+        android:background="@color/colorPrimary"
         android:textSize="30sp"
-        android:textColor="#aaa"
+        android:textColor="@color/colorText"
         android:text="Contact Options" />
 
     <LinearLayout
@@ -25,6 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textCursorDrawable="@null"
+            android:backgroundTint="@color/colorBlack"
             android:hint="Search by name or number"
             android:inputType="textPersonName" />
 
@@ -68,7 +70,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="8dp"
-        android:background="#000" />
+        android:background="@color/colorBlack" />
 
     <ScrollView
         android:layout_width="match_parent"

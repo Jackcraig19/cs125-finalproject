@@ -19,6 +19,11 @@ public class MessageBuilder {
         }
 
         //Filling map from /res/values/strings
+        responseMap.put("default", res.getStringArray(R.array.default_response));
+        responseMap.put("question", res.getStringArray(R.array.question_response));
+        for (String s : contactPrompt) {
+            responseMap.put(s, res.getStringArray(R.array.contact_response));
+        }
         for (String s : res.getStringArray(R.array.greet_prompt)) {
             responseMap.put(s, res.getStringArray(R.array.greet_response));
         }
@@ -46,29 +51,43 @@ public class MessageBuilder {
         for (String s : res.getStringArray(R.array.bot_prompt)) {
             responseMap.put(s, res.getStringArray(R.array.bot_response));
         }
-        for (String s : contactPrompt) {
-            responseMap.put(s, res.getStringArray(R.array.contact_response));
-        }
         for (String s : res.getStringArray(R.array.plan_prompt)) {
             responseMap.put(s, res.getStringArray(R.array.plan_response));
+        }
+        for (String s : res.getStringArray(R.array.president_prompt)) {
+            responseMap.put(s, res.getStringArray(R.array.president_response));
         }
     }
 
     public static String getResponse(String message, String name) {
+        message = message.trim();
         String[] msgArray = message.split(" ");
         StringBuilder toSend = new StringBuilder();
         for (String s : msgArray) {
             String prompt = s.toLowerCase().replaceAll("\\W","");
             String[] r = responseMap.get(prompt);
             if (r != null) {
+                if (!toSend.toString().equals("")) {
+                    toSend.append("\n\n");
+                }
                 String toAppend = r[(int)(Math.random() * r.length)];
-                toSend.append(toAppend.replace("/n/", name).replace("/p/", prompt));
+                toSend.append(toAppend.replace("/p/", prompt).replace("/n/", name));
                 toSend.append(" ");
             }
         }
-        if (toSend.length() == 0) {
-            toSend.append("Sorry, can't talk right now.");
+        if (toSend.length() != 0) {
+            return toSend.toString();
         }
-        return toSend.toString();
+        if (message.length() > 0 && message.charAt(message.length() - 1) == '?') {
+            String[] r = responseMap.get("question");
+            if (r != null) {
+                return r[(int) (Math.random() * r.length)];
+            }
+        }
+        String[] r = responseMap.get("default");
+        if (r != null) {
+            return r[(int) (Math.random() * r.length)];
+        }
+        return "Error: no message built";
     }
 }

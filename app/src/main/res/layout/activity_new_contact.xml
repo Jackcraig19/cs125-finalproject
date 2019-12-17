@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#888" >
+    android:background="@color/colorBackGrey" >
 
     <TextView
         android:id="@+id/textView"
@@ -11,8 +11,8 @@
         android:gravity="center"
         android:textSize="36sp"
         android:text="Add Contact"
-        android:textColor="#aaa"
-        android:background="#F505"/>
+        android:textColor="@color/colorText"
+        android:background="@color/colorPrimary"/>
 
     <Space
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:layout_height="56dp"
             android:layout_weight="3"
             android:gravity="center"
-            android:textColor="#000"
+            android:textColor="@color/colorBlack"
             android:text="Name:" />
 
         <EditText
@@ -38,8 +38,10 @@
             android:layout_width="match_parent"
             android:layout_weight="4"
             android:ems="10"
+            android:textCursorDrawable="@null"
+            android:backgroundTint="@color/colorBlack"
             android:inputType="textPersonName"
-            android:textColor="#000"
+            android:textColor="@color/colorBlack"
             android:hint="i.e. John Smith" />
     </LinearLayout>
 
@@ -57,7 +59,7 @@
             android:layout_width="240dp"
             android:layout_height="56dp"
             android:layout_weight="3"
-            android:textColor="#000"
+            android:textColor="@color/colorBlack"
             android:gravity="center"
             android:text="Phone Number:" />
 
@@ -67,8 +69,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:ems="10"
+            android:textCursorDrawable="@null"
+            android:backgroundTint="@color/colorBlack"
             android:inputType="phone"
-            android:textColor="#000"
+            android:textColor="@color/colorBlack"
             android:hint="i.e. (000)-000-0000" />
 
     </LinearLayout>
