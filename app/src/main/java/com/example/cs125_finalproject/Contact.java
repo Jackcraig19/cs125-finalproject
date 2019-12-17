@@ -28,8 +28,7 @@ public class Contact {
             return false;
         }
         if (check instanceof Contact) {
-            Contact checkContact = (Contact) check;
-            return number.equals(checkContact.getNumber());
+            return number.equals(((Contact) check).getNumber());
         }
         return false;
     }

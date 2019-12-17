@@ -58,7 +58,7 @@ public class NewContactActivity extends AppCompatActivity {
                         return;
                     }
                     Handler.contacts.add(c);
-                    MessageBuilder.setupMessages(CONTEXT);
+                    MessageBuilder.setupContacts(CONTEXT);
                     nameBox.setText("");
                     numberBox.setText("");
                 } catch (Exception e) {
@@ -89,7 +89,7 @@ public class NewContactActivity extends AppCompatActivity {
                             }
                         }
                     }
-                    MessageBuilder.setupMessages(CONTEXT);
+                    MessageBuilder.setupContacts(CONTEXT);
                     Toast.makeText(CONTEXT, "Contacts Filled", Toast.LENGTH_LONG).show();
                 }
             }
@@ -101,7 +101,7 @@ public class NewContactActivity extends AppCompatActivity {
             try {
                 String digit = number.substring(j, j + 1);
                 Integer.parseInt(digit);
-                num = num + digit;
+                num = num.concat(digit);
             } catch (Exception e) {
                 //illegal character, do nothing
             }

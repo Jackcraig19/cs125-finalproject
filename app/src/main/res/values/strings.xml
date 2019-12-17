@@ -129,6 +129,8 @@
         <item>I love /p/!</item>
         <item>I hate /p/.</item>
         <item>Who\'s /p/?</item>
+        <item>What are we gonna do about /p/?</item>
+        <item>/p/? Cool kid.</item>
     </string-array>
     <string-array name="plan_prompt">
         <item>wyd</item><item>free</item><item>tonight</item>
@@ -154,7 +156,22 @@
         <item>Keep quiet</item>
         <item>In time, /n/&#8230;</item>
         <item>Patience for now&#8230;</item>
-        <item>Sic Semper Tyrannis</item>
+        <item>SIC SEMPER TYRANNIS!!!</item>
         <item>We can meet in the usual spot</item>
+    </string-array>
+    <string-array name="chad_prompt">
+        <item>bro</item><item>bruh</item><item>bet</item>
+        <item>sick</item><item>rager</item><item>bop</item>
+        <item>gnarly</item><item>chill</item><item>wild</item>
+    </string-array>
+    <string-array name="chad_response">
+        <item>bro</item>
+        <item>bruh</item>
+        <item>bet</item>
+        <item>sick</item>
+        <item>gnarly</item>
+        <item>im fuckin down</item>
+        <item>its gonna be gnarly</item>
+        <item>for sure</item>
     </string-array>
 </resources>

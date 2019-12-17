@@ -1,9 +1,9 @@
 package com.example.cs125_finalproject;
 
+import android.Manifest;
 import android.app.AlertDialog;
-import android.app.Service;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,16 +11,18 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.MediaController;
 import android.widget.Space;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
 public class EditActivity extends AppCompatActivity {
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     private String restriction = "";
     private final EditActivity CONTEXT = this;
 
@@ -28,11 +30,11 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+        final EditActivity CONTEXT = this;
         setTitle("Contact Options");
         ((TextView) findViewById(R.id.contactLength)).setText("You Have " + Handler.contacts.size() + "Contacts");
 
-        getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         Button returnButton = findViewById(R.id.returnButton);
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +99,13 @@ public class EditActivity extends AppCompatActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                         if (checked) {
-                            c.setState(true);
+                            if (ContextCompat.checkSelfPermission(CONTEXT, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                                ActivityCompat.requestPermissions(CONTEXT, new String[]{Manifest.permission.SEND_SMS}, MY_PERMISSIONS_REQUEST_SEND_SMS);
+                                c.setState(false);
+                                toggleSwitch.setChecked(false);
+                            } else {
+                                c.setState(true);
+                            }
                         } else {
                             c.setState(false);
                         }
@@ -140,6 +148,6 @@ public class EditActivity extends AppCompatActivity {
                 parent.addView(space);
             }
         }
-        MessageBuilder.setupMessages(CONTEXT);
+        MessageBuilder.setupContacts(CONTEXT);
     }
 }
